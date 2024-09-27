@@ -1,10 +1,11 @@
-import AbstractStorage, { Note } from './abstract';
 import mongoose from 'mongoose';
+import AbstractStorage, { Note } from './abstract';
+import config from '../config';
 
-const host = 'localhost';
-const port = 27017;
-const db = 'test_db';
-const collection = 'test_collection';
+const host = config.storage.mongoDB.host;
+const port = config.storage.mongoDB.port;
+const db = config.storage.mongoDB.db;
+const collection = config.storage.mongoDB.collection;
 
 interface MongoDocNote {
   _id: number | null | undefined;

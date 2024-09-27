@@ -1,9 +1,12 @@
 import express, { Request, Response } from 'express';
 import noteRouter from './routes/note';
+import config from './config';
+
+console.info('Server initialized with config:', config);
 
 const app = express();
-const port = 3000;
-const host = 'http://localhost';
+const host = config.server.host;
+const port = config.server.port;
 
 app.use('/', express.json());
 app.use('/note', noteRouter);

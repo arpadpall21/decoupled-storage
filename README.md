@@ -3,35 +3,21 @@
 
 ## Description
   - This project features a decoupled storage solution for a simple server
-  - We can connect different storages by implementing the `AbstractStorage` abstract class (MySQL and MongoDB implemented currently)
-  - This is a templated for the described approach not a production ready code (basic message format used, no validation, basic logging, etc...)
+  - We can connect different storages by implementing the `AbstractStorage` abstract class (file, MySQL and MongoDB implemented)
+  - This is a template not a production ready code (basic message format used, no validation, basic logging, etc...)
 
 ## Requirements
   - nodejs v22.3.0
-  - MySQL database
+  - MySQL database (optional)
   - MongoDB database (optional)
 
 ## Setup
   - Run `npm install` to install dependencies
-  - Required database connections:
-```
-##### MySQL #####
-host: localhost
-port: 3306
-user: test_user;
-password: pass;
-database: test_db;
-
-##### MongoDB #####
-host: localhost
-port: 27017
-database: test_db;
-```
 
 ## Usage
   - Build & start the server with `npm run build && npm start`
-  - By default the server connects to MySQL, set the `NODE_USE_MONGODB` environment variable to true in order to use MongoDB (run: `export NODE_USE_MONGODB=1`)
-  
+  - Database connections can be configured by `config/config.json`
+    - `storage.use` property controls which storage type to use (available: `file` | `mongoDB` | `MySQL`) (Default: `file`)
 
 ##### Request Examples:
 ```
