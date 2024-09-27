@@ -15,6 +15,13 @@ interface Config {
       db: string;
       collection: string;
     };
+    MySQL: {
+      host: string;
+      port: number;
+      user: string;
+      password: string;
+      db: string;
+    };
   };
 }
 
@@ -26,10 +33,17 @@ const defaultConfig: Config = {
   storage: {
     use: StorageType.FILE,
     mongoDB: {
-      host: 'localhost',
-      port: 27017,
-      db: 'test_db',
-      collection: 'test_collection',
+      host: '',
+      port: 0,
+      db: '',
+      collection: '',
+    },
+    MySQL: {
+      host: '',
+      port: 0,
+      user: '',
+      password: '',
+      db: '',
     },
   },
 };

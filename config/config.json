@@ -4,12 +4,19 @@
     "port": 3000
   },
   "storage": {
-    "use": "mongoDB",
+    "use": "MySQL",
     "mongoDB": {
       "host": "localhost",
       "port": 27017,
       "db": "test_db",
       "collection": "test_collection"
+    },
+    "MySQL": {
+      "host": "localhost",
+      "port": 3306,
+      "user": "test_user",
+      "password": "pass",
+      "db": "test_db"
     }
   }
 }

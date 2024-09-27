@@ -1,11 +1,14 @@
-import AbstractStorage, { Note } from './abstract';
 import { Sequelize, DataTypes } from 'sequelize';
+import AbstractStorage, { Note } from './abstract';
+import config from '../config';
 
-const user = 'test_user';
-const pass = 'pass';
-const db = 'test_db';
+const host = config.storage.MySQL.host;
+const port = config.storage.MySQL.port;
+const user = config.storage.MySQL.user;
+const password = config.storage.MySQL.password;
+const db = config.storage.MySQL.db;
 
-const sequelize = new Sequelize(`mysql://${user}:${pass}@localhost:3306/${db}`);
+const sequelize = new Sequelize(`mysql://${user}:${password}@${host}:${port}/${db}`);
 
 const NotesModel = sequelize.define(
   'Notes',
