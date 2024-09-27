@@ -1,3 +1,9 @@
+export enum StorageType {
+  FILE = 'file',
+  MONGODB = 'mongoDB',
+  MYSQL = 'MySQL',
+}
+
 export interface Note {
   id: number;
   author?: string;

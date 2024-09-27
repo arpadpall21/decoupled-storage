@@ -1,8 +1,7 @@
 import { Router, Request, Response } from 'express';
-import Storage from '../storage';
+import storage from '../storage';
 import { Note } from '../storage/abstract';
 
-const storage = new Storage();
 const noteRouter = Router();
 
 noteRouter
