@@ -9,6 +9,9 @@ interface Config {
   };
   storage: {
     use: StorageType;
+    file: {
+      path: string;
+    };
     mongoDB: {
       host: string;
       port: number;
@@ -32,6 +35,9 @@ const defaultConfig: Config = {
   },
   storage: {
     use: StorageType.FILE,
+    file: {
+      path: '',
+    },
     mongoDB: {
       host: '',
       port: 0,

@@ -5,6 +5,9 @@
   },
   "storage": {
     "use": "MySQL",
+    "file": {
+      "path": "./localStorage.json"
+    },
     "mongoDB": {
       "host": "localhost",
       "port": 27017,
