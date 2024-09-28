@@ -76,17 +76,20 @@ class FileStorage extends AbstractStorage {
   }
 
   async delete(id: number): Promise<boolean> {
-    // if (!this.conntected) {
-    //   console.error('Database delete opreation failed, no database connected!');
-    //   return false;
-    // }
+    try {
+      const fileStorage = await this.readFileStorage();
 
-    // const result = await NotesModel.deleteOne({ _id: id });
-    // return result.deletedCount === 1 ? true : false;
-    
-    
-    
-    return false;
+      if (!fileStorage[id]) {
+        return false;
+      }
+
+      delete fileStorage[id];
+      await this.writeFileStorage(fileStorage);
+      return true;
+    } catch {
+      console.error('Failed to delete note with id: ', id);
+      return false;
+    }
   }
 
   private async readFileStorage(): Promise<{ [key: string]: Note }> {

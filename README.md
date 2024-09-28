@@ -4,7 +4,7 @@
 ## Description
   - This project features a decoupled storage solution for a simple server
   - We can connect different storages by implementing the `AbstractStorage` abstract class (file, MySQL and MongoDB implemented)
-  - This is a template not a production ready code (basic message format used, no validation, basic logging, etc...)
+  - This is a template not a production ready code (basic response format used, no validation, basic logging, etc...)
 
 ## Requirements
   - nodejs v22.3.0
