@@ -9,10 +9,11 @@ class FileStorage extends AbstractStorage {
     super();
 
     try {
-      fs.accessSync(filePath, fs.constants.F_OK);
+      const result = fs.readFileSync(filePath);
+      JSON.parse(result.toString());
       console.info(`File used for file storage: ${filePath}`);
     } catch {
-      throw Error('Invalid path configured for file storage');
+      throw Error('Invalid file configured for file storage');
     }
   }
 
@@ -52,7 +53,7 @@ class FileStorage extends AbstractStorage {
         return false;
       }
     } catch {
-      console.error('Failed to create record(s)');
+      console.error('Failed to read record(s)');
       return false;
     }
 
