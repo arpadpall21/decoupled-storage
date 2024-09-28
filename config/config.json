@@ -6,7 +6,7 @@
   "storage": {
     "use": "file",
     "file": {
-      "path": "./localStorage.json"
+      "path": "./fileStorage/fileStorage.json"
     },
     "mongoDB": {
       "host": "localhost",

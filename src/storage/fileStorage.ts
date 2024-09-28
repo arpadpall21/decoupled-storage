@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import AbstractStorage, { Note } from './abstract';
 import config from '../config';
 
-const filePath = config.storage.mongoDB.host;
+const filePath = config.storage.file.path;
 
 class FileStorage extends AbstractStorage {
   constructor() {
@@ -10,12 +10,10 @@ class FileStorage extends AbstractStorage {
 
     try {
       fs.accessSync(filePath, fs.constants.F_OK);
+      console.info(`File used for file storage: ${filePath}`);
     } catch {
-      fs.writeFileSync(filePath, JSON.stringify({}));
-      console.info(`File for file storage does not exists, new created :${filePath}`)
+      throw Error('Invalid path configured for file storage');
     }
-
-
   }
 
   async create(post: Note): Promise<boolean> {
