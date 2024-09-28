@@ -17,7 +17,7 @@
 ## Usage
   - Build & start the server with `npm run build && npm start`
   - Database connections can be configured by `config/config.json`
-    - `storage.use` property controls which storage type to use (available: `file` | `mongoDB` | `MySQL`) (Default: `file`)
+    - The `storage.use` property controls which storage type to use (available: `file` | `mongoDB` | `MySQL`) (Default: `file`)
 
 ##### Request Examples:
 ```
