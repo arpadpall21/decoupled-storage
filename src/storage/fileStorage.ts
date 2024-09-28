@@ -56,42 +56,23 @@ class FileStorage extends AbstractStorage {
       console.error('Failed to read record(s)');
       return false;
     }
-
-
-    // if (!this.conntected) {
-    //   console.error('Database read opreation failed, no database connected!');
-    //   return false;
-    // }
-
-    // if (id) {
-    //   console.info(`Getting record with id: ${id}`);
-    //   const result = await NotesModel.findOne({ _id: id });
-    //   return result ? this.mongoDocNoteToNote(result) : false;
-    // }
-
-    // console.info('Getting all records');
-    // const result = await NotesModel.find();
-    // return result.map((doc) => this.mongoDocNoteToNote(doc));
-    
-    
-    
-      // const fileStorage = await this.readFileStorage();
   }
 
   async update(note: Note): Promise<boolean> {
-    // if (!this.conntected) {
-    //   console.error('Database update opreation failed, no database connected!');
-    //   return false;
-    // }
+    try {
+      const fileStorage = await this.readFileStorage();
 
-    // const result = await NotesModel.updateOne(
-    //   { _id: note.id },
-    //   { _id: note.id, author: note.author, content: note.content },
-    // );
-    // return result.modifiedCount === 1 ? true : false;
-    
-    
-    return false;
+      if (!fileStorage[note.id]) {
+        return false;
+      }
+
+      fileStorage[note.id] = note;
+      await this.writeFileStorage(fileStorage);
+      return true;
+    } catch {
+      console.error('Failed to update note: ', note);
+      return false;
+    }
   }
 
   async delete(id: number): Promise<boolean> {
